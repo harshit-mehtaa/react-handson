@@ -1,7 +1,10 @@
 import React from "react";
 // import logo from './logo.svg';
 import "./App.css";
-import TicTacToe from "./components/tictactoe/TicTacToe";
+import Header from "./components/Header";
+import Main from "./components/Main";
+import Navbar from "./components/Navbar";
+// import TicTacToe from "./components/tictactoe/TicTacToe";
 
 function App() {
   return (
@@ -20,7 +23,10 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <TicTacToe />
+      <Header />
+      <Navbar />
+      <Main />
+      {/* <TicTacToe /> */}
     </div>
   );
 }
