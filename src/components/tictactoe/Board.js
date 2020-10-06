@@ -84,7 +84,13 @@ class Board extends Component {
           {this.renderSquare(8)}
         </div>
         <div className="reset">
-          <button type="button" className="reset-button" onClick={this.resetGame}>Reset</button>
+          <button
+            type="button"
+            className="reset-button"
+            onClick={this.resetGame}
+          >
+            Reset
+          </button>
         </div>
       </>
     );
