@@ -6,7 +6,9 @@ class Main extends Component {
   render() {
     return (
       <div className="main">
-        <TicTacToe />
+        <div className="card">
+          <TicTacToe />
+        </div>
       </div>
     );
   }
