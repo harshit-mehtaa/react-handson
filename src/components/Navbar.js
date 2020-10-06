@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import gamepadicon from "../gamepad.svg"
 import "./ReactHandson.css";
 
 class Navbar extends Component {
@@ -7,7 +8,10 @@ class Navbar extends Component {
       <div className="navbar">
         <ul>
           <li>
-            <button>Tic-Tac-Toe</button>
+            <button>
+                <img src={gamepadicon} className="gamepad-icon" alt="gamepadicon" />
+                <span>Tic-Tac-Toe</span>
+              </button>
           </li>
         </ul>
       </div>
