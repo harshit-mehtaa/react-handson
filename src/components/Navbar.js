@@ -1,20 +1,33 @@
 import React, { Component } from "react";
-import gamepadicon from "../gamepad.svg"
+import logo from "../logo.svg";
 import "./ReactHandson.css";
 
 class Navbar extends Component {
   render() {
     return (
-      <div className="navbar">
-        <ul>
-          <li>
-            <button>
-                <img src={gamepadicon} className="gamepad-icon" alt="gamepadicon" />
-                <span>Tic-Tac-Toe</span>
-              </button>
-          </li>
-        </ul>
-      </div>
+      <>
+        <nav className="nav fixed-top nav-expand-md">
+          <div className="float-left">
+            <a
+              href="#"
+              data-activates="slide-out"
+              className="button-collapse"
+              onClick={this.props.toggleSlideOut}
+            >
+              <i className="fas fa-bars"></i>
+              <span className="sr-only" aria-hidden="true">
+                Toggle side navigation
+              </span>
+            </a>
+          </div>
+          <div>
+            <button className="app-name">
+              <img src={logo} className="App-logo" alt="logo" />
+              <span>React-Handson</span>
+            </button>
+          </div>
+        </nav>
+      </>
     );
   }
 }

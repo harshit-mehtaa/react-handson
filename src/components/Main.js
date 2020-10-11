@@ -4,9 +4,10 @@ import "./ReactHandson.css";
 
 class Main extends Component {
   render() {
+    console.log(this.props)
     return (
-      <div className="main">
-        <h1 className="application" >Tic-Tac-Toe</h1>
+      <div id="main" className={this.props.objState.mainSlideClassName}>
+        <h1 className="application">Tic-Tac-Toe</h1>
         <div className="card">
           <TicTacToe />
         </div>

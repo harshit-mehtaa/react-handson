@@ -1,21 +1,32 @@
-import React from "react";
-import logo from "../logo.svg";
+import React, { Component } from "react";
+import gamepadicon from "../gamepad.svg";
 import "./ReactHandson.css";
+import Navbar from "./Navbar";
 
-function Header() {
-  return (
-    <div className="header">
-      <a href="#" className="menu-icon">
-        <div></div>
-        <div></div>
-        <div></div>
-      </a>
-      <button className="app-name">
-        <img src={logo} className="App-logo" alt="logo" />
-        <span>React-Handson</span>
-      </button>
-    </div>
-  );
+class Header extends Component {
+  render() {
+    return (
+      <>
+        <header>
+          <div id="slide-out" className={this.props.objState.slideOutClassName}>
+            <ul>
+              <li>
+                <button>
+                  <img
+                    src={gamepadicon}
+                    className="gamepad-icon"
+                    alt="gamepadicon"
+                  />
+                  <span>Tic-Tac-Toe</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+          <Navbar toggleSlideOut={this.props.toggleSlideOut} />
+        </header>
+      </>
+    );
+  }
 }
 
 export default Header;
