@@ -1,20 +1,3 @@
-// import React from "react";
-// import "./App.css";
-// import Header from "./components/Header";
-// import Main from "./components/Main";
-// // import Navbar from "./components/Navbar";
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <Header />
-//       <Main />
-//     </div>
-//   );
-// }
-
-// export default App;
-
 import React, { Component } from "react";
 import "./App.css";
 import Header from "./components/Header";
