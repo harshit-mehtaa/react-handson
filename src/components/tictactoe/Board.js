@@ -59,6 +59,8 @@ class Board extends Component {
     if (winnerCells) {
       status = "Winner: " + this.state.squares[winnerCells.slice()[0]];
       statusSuccess = "success";
+      // Disable all blocks
+      this.state.isEnabled = Array(9).fill(false)
     } else if (!this.state.squares.slice().includes(null)) {
       status = "Draw. Nobody wins";
     } else {
