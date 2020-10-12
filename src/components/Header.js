@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import gamepadicon from "../gamepad.svg";
+import tictactoe from "../tictactoe.svg";
+import sudoku from "../sudoku.svg";
 import "./ReactHandson.css";
 import Navbar from "./Navbar";
 
@@ -8,16 +9,26 @@ class Header extends Component {
     return (
       <>
         <header>
-          <div id="slide-out" className={this.props.objState.slideOutClassName}>
+          <div className={this.props.objState.slideOutClassName}>
             <ul>
-              <li>
+              <li onClick={() => this.props.setActiveTab("Tic-Tac-Toe", "tictactoe")}>
                 <button>
                   <img
-                    src={gamepadicon}
-                    className="gamepad-icon"
-                    alt="gamepadicon"
+                    src={tictactoe}
+                    className="side-nav-icon"
+                    alt="tic-tac-toe"
                   />
                   <span>Tic-Tac-Toe</span>
+                </button>
+              </li>
+              <li onClick={() => this.props.setActiveTab("Sudoku", "sudoku")}>
+                <button>
+                  <img
+                    src={sudoku}
+                    className="side-nav-icon"
+                    alt="sudoku"
+                  />
+                  <span>Sudoku</span>
                 </button>
               </li>
             </ul>

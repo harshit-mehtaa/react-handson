@@ -11,6 +11,10 @@ class App extends Component {
       show: true,
       slideOutClassName: "side-nav fixed",
       mainSlideClassName: "main",
+      active: {
+        header: "Tic-Tac-Toe",
+        card: "tictactoe",
+      }
     };
   }
 
@@ -21,11 +25,21 @@ class App extends Component {
       show: !this.state.show,
     });
   };
+
+  setActiveTab = (header, card) => {
+    this.setState({
+      active: {
+        header: header,
+        card: card,
+      }
+    });
+  }
+
   render() {
     return (
       <div className="App">
-        <Header toggleSlideOut={this.toggleSlideOut} objState={this.state} />
-        <Main toggleSlideOut={this.toggleSlideOut} objState={this.state} />
+        <Header toggleSlideOut={this.toggleSlideOut} setActiveTab={this.setActiveTab} objState={this.state} />
+        <Main toggleSlideOut={this.toggleSlideOut} setActiveTab={this.setActiveTab} objState={this.state} />
       </div>
     );
   }

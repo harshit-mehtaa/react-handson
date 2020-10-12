@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import TicTacToe from "./tictactoe/TicTacToe";
 import "./ReactHandson.css";
+import Sudoku from "./sudoku/Sudoku";
 
 class Main extends Component {
   render() {
-    console.log(this.props)
     return (
       <div id="main" className={this.props.objState.mainSlideClassName}>
-        <h1 className="application">Tic-Tac-Toe</h1>
+        <h1 className="application">{this.props.objState.active.header}</h1>
         <div className="card">
-          <TicTacToe />
+          {this.props.objState.active.card === "tictactoe" && <TicTacToe />}
+          {this.props.objState.active.card === "sudoku" && <Sudoku />}
         </div>
       </div>
     );

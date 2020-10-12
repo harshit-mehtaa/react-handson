@@ -10,7 +10,6 @@ class Navbar extends Component {
           <div className="float-left">
             <a
               href="#"
-              data-activates="slide-out"
               className="button-collapse"
               onClick={this.props.toggleSlideOut}
             >
@@ -22,8 +21,10 @@ class Navbar extends Component {
           </div>
           <div>
             <button className="app-name">
-              <img src={logo} className="App-logo" alt="logo" />
-              <span>React-Handson</span>
+              <a href="/">
+                <img src={logo} className="App-logo" alt="logo" />
+                <span>React-Handson</span>
+              </a>
             </button>
           </div>
         </nav>
