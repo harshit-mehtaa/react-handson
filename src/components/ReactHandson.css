@@ -112,6 +112,9 @@ body {
     margin-left: 10px;
     font-size: 1.4rem;
     cursor: pointer;
+    background-color: #fff;
+    outline: none;
+    border: none;
 }
 
 .fa,
@@ -184,6 +187,8 @@ body {
 .side-nav ul li:hover,
 .side-nav ul li button:hover {
     background-color: #ebedee;
+    transition: background-color 0.3s ease-in-out;
+
 }
 
 .side-nav-icon {
@@ -199,7 +204,7 @@ body {
     margin-top: 58px;
     /* Disabling scroll */
     /* padding-bottom: 20px; */
-    background: #f7f7f7;
+    background-color: #f7f7f7;
     will-change: margin-left;
     transition: margin-left 0.3s ease-in-out;
 }
@@ -218,7 +223,7 @@ body {
 }
 
 .card {
-    background: #fff;
+    background-color: #fff;
     display: inline-block;
     padding: 20px 100px;
     margin: 30px 20px;
@@ -251,7 +256,7 @@ body {
 }
 
 .square {
-    background: #282c34;
+    background-color: #282c34;
     border: 1px solid #999;
     float: left;
     font-size: 48px;
@@ -266,23 +271,38 @@ body {
 }
 
 .square:hover {
-    background: #15171c;
+    background-color: #15171c;
 }
 
 .square.X {
     color: #fc929e;
+    pointer-events:none;
 }
 
 .square.O {
     color: #5fb6f2;
+    pointer-events:none;
 }
 
 .square:focus {
     outline: none;
 }
 
+.square.disabled {
+    pointer-events:none;
+}
+
+.sudoku-square {
+    font-size: 18px;
+    line-height: 34px;
+    height: 34px;
+    width: 34px;
+    margin: unset;
+    color: #fff;
+}
+
 .kbd-navigation .square:focus {
-    background: #ddd;
+    background-color: #ddd;
 }
 
 .game-info {
@@ -300,7 +320,7 @@ ul {
 }
 
 .reset-button {
-    background: #fb3 !important;
+    background-color: #fb3;
     color: #fff;
     appearance: none;
     outline: none;
@@ -313,6 +333,40 @@ ul {
 }
 
 .reset-button:hover {
-    background: #ffb032;
+    background-color: #ffb032;
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.2), 0px 4px 20px 0px rgba(0, 0, 0, 0.2);
+}
+
+.number-panel {
+    margin-top: 20px;
+}
+
+.number-panel-number {
+    background-color: teal;
+    margin: 0px 2px;
+    border: 1px solid;
+    border-radius: 2px;
+    color: #fff;
+}
+
+.sudoku-number-panel-empty {
+    margin-left: 5px;
+    background-color:teal;
+    /* font-size: 18px; */
+    /* line-height: 34px; */
+    height: 34px;
+    padding: 10px 20px;
+}
+
+.sudoku-number-panel-empty:hover {
+    background-color: teal;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.2), 0px 4px 20px 0px rgba(0, 0, 0, 0.2);
+}
+
+.sudoku-board {
+    display: inline-block;
+}
+
+.side-nav-li-active {
+    color: #4285f4;
 }

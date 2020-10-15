@@ -8,8 +8,7 @@ class Navbar extends Component {
       <>
         <nav className="nav fixed-top nav-expand-md">
           <div className="float-left">
-            <a
-              href="#"
+            <div
               className="button-collapse"
               onClick={this.props.toggleSlideOut}
             >
@@ -17,13 +16,13 @@ class Navbar extends Component {
               <span className="sr-only" aria-hidden="true">
                 Toggle side navigation
               </span>
-            </a>
+            </div>
           </div>
           <div>
             <button className="app-name">
               <a href="/">
                 <img src={logo} className="App-logo" alt="logo" />
-                <span>React-Handson</span>
+                <span>React Hands-on</span>
               </a>
             </button>
           </div>

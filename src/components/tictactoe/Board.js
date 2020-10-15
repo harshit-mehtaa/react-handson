@@ -9,7 +9,6 @@ class Board extends Component {
       squares: Array(9).fill(null),
       squareClassName: Array(9).fill("square"),
       xIsNext: true,
-      isEnabled: Array(9).fill(true),
     };
   }
 
@@ -20,14 +19,10 @@ class Board extends Component {
     const squareClassName = this.state.squareClassName.slice();
     squareClassName[i] = this.state.xIsNext ? "square X" : "square O";
 
-    const isEnabled = this.state.isEnabled.slice();
-    isEnabled[i] = false;
-
     this.setState({
       squares: squares,
       squareClassName: squareClassName,
       xIsNext: !this.state.xIsNext,
-      isEnabled: isEnabled,
     });
   }
 
@@ -37,7 +32,6 @@ class Board extends Component {
         className={this.state.squareClassName[i]}
         value={this.state.squares[i]}
         onClick={() => this.handleClick(i)}
-        disabled={this.state.isEnabled[i]}
       />
     );
   }
@@ -47,7 +41,6 @@ class Board extends Component {
       squares: Array(9).fill(null),
       squareClassName: Array(9).fill("square"),
       xIsNext: true,
-      isEnabled: Array(9).fill(true),
     });
   };
 
@@ -59,8 +52,13 @@ class Board extends Component {
     if (winnerCells) {
       status = "Winner: " + this.state.squares[winnerCells.slice()[0]];
       statusSuccess = "success";
+
       // Disable all blocks
-      this.state.isEnabled = Array(9).fill(false)
+      // eslint-disable-next-line
+      this.state.squareClassName = this.state.squareClassName.map((item) => {
+        return item === "square" ? "square disabled" : item;
+      })
+
     } else if (!this.state.squares.slice().includes(null)) {
       status = "Draw. Nobody wins";
     } else {
