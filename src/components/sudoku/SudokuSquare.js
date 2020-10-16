@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 function SudokuSquare(props) {
-    return (
-        <button className={props.className} onClick={props.onClick} disabled={!props.disabled}>
-            {props.value}
-        </button>
-    )
+  return (
+    <div className={props.className} onClick={props.onClick}>
+      {props.value}
+    </div>
+  );
 }
 
-export default SudokuSquare
+export default SudokuSquare;
