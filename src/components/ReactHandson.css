@@ -5,7 +5,7 @@ html {
 
 /* body {
   /* Disabling scroll */
-  /* overflow: hidden; /
+/* overflow: hidden; /
 } */
 
 /* width */
@@ -21,6 +21,7 @@ html {
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #bbb;
+  border-radius: 5px;
 }
 
 /* Handle on hover */
@@ -323,7 +324,7 @@ html {
   height: 34px;
   width: 34px;
   margin: unset;
-  color: #fff;
+  color: #fc929e;
 }
 
 .kbd-navigation .square:focus {
@@ -374,6 +375,16 @@ ul {
   border: 1px solid;
   border-radius: 2px;
   color: #fff;
+  margin-bottom: 5px;
+}
+
+.number-panel-eraser {
+  background-color: #ffbb33;
+  margin: 0px 2px;
+  border: 1px solid;
+  border-radius: 2px;
+  color: #fff;
+  margin-bottom: 5px;
 }
 
 .sudoku-number-panel-empty {
@@ -409,5 +420,10 @@ ul {
 
 .sudoku-square-blue,
 .sudoku-square-blue:hover {
-  background-color: #5fb6f2;
+  background-color: slateblue; /*#adff2fb3; /*#5fb6f2;*/
+}
+
+.sudoku-square-active {
+  border: 1px solid;
+  background-color: slateblue;
 }

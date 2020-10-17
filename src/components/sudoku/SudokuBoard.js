@@ -6,7 +6,7 @@ class SudokuBoard extends Component {
     super(props);
 
     this.state = {
-      squares: Array(81).fill(null),
+      squares: Array(81).fill(0),
       squareClassName: Array(81).fill("square sudoku-square"),
       xIsNext: true,
       // isEnabled: Array(81).fill(true),
@@ -38,10 +38,41 @@ class SudokuBoard extends Component {
       <SudokuSquare
         className="square sudoku-square number-panel-number"
         value={i}
-        onClick={() => this.handleClick(i)}
+        onClick={() => this.handleNumberPanelClick(i)}
         // disabled={this.state.isEnabled[i]}
       />
     );
+  }
+
+  handleNumberPanelClick(i) {
+    const squares = this.state.squares.slice();
+    if (i === "eraser") {
+      squares[this.state.lastSelected] = null;
+    } else {
+      squares[this.state.lastSelected] = i;
+    }
+
+    const classname = this.state.squareClassName.slice();
+    for (const index of [...Array(81).keys()]) {
+      if (classname[index].includes("sudoku-square-blue")) {
+        classname[index] = classname[index].replace(" sudoku-square-blue", "");
+      }
+      if (classname[index].includes("sudoku-square-active")) {
+        classname[index] = classname[index].replace(
+          " sudoku-square-active",
+          ""
+        );
+      }
+    }
+
+    if (!classname[this.state.lastSelected].includes("sudoku-square-active")) {
+      classname[this.state.lastSelected] += " sudoku-square-active";
+    }
+
+    this.setState({
+      squares: squares,
+      squareClassName: classname,
+    });
   }
 
   handleClick(i) {
@@ -58,23 +89,42 @@ class SudokuBoard extends Component {
     }
 
     // Gathering column cells
+    const colNum = i % 9;
     const colCells = [];
-    for (let j = i % 9; j < 81; j += 9) {
+    for (let j = colNum; j < 81; j += 9) {
       colCells.push(j);
     }
 
-    const blueCells = [...new Set([...rowCells, ...colCells])];
+    // Gathering block (3x3)
+    const rowBlockStartCells =
+      Math.floor(rowNum / 3) * 27 + Math.floor(colNum / 3) * 3;
+    const blockCells = [];
+
+    for (let i = rowBlockStartCells; i < rowBlockStartCells + 27; i += 9) {
+      for (let j = i; j < i + 3; j++) {
+        blockCells.push(j);
+      }
+    }
+
+    const blueCells = [...new Set([...rowCells, ...colCells, ...blockCells])];
     const nonBlueCells = [...Array(81).keys()].filter(
       (x) => !blueCells.includes(x)
     );
 
-    console.log(blueCells);
-    console.log(nonBlueCells);
+    // console.log(blueCells);
+    // console.log(nonBlueCells);
 
-    // Removing if blue is exists
     for (const index of nonBlueCells) {
+      // Removing blue if exists
       if (classname[index].includes("sudoku-square-blue")) {
-        classname[index] = classname[index].replace("sudoku-square-blue", "");
+        classname[index] = classname[index].replace(" sudoku-square-blue", "");
+      }
+      // Removing active if exists
+      if (classname[index].includes("sudoku-square-active")) {
+        classname[index] = classname[index].replace(
+          " sudoku-square-active",
+          ""
+        );
       }
     }
 
@@ -83,6 +133,10 @@ class SudokuBoard extends Component {
       if (!classname[index].includes("sudoku-square-blue")) {
         classname[index] += " sudoku-square-blue";
       }
+    }
+
+    if (!classname[i].includes("sudoku-square-active")) {
+      classname[i] += " sudoku-square-active";
     }
 
     this.setState({
@@ -94,7 +148,7 @@ class SudokuBoard extends Component {
     });
   }
 
-  resetGame = () => {
+  resetGame() {
     this.setState({
       squares: Array(81).fill(null),
       squareClassName: Array(81).fill("square sudoku-square"),
@@ -102,7 +156,7 @@ class SudokuBoard extends Component {
       // isEnabled: Array(81).fill(true),
       lastSelected: null,
     });
-  };
+  }
 
   render() {
     // console.log(this.state)
@@ -219,18 +273,17 @@ class SudokuBoard extends Component {
           {this.renderNumberPanel(7)}
           {this.renderNumberPanel(8)}
           {this.renderNumberPanel(9)}
-          <button
+          <div
             type="button"
-            className="reset-button sudoku-number-panel-empty"
-          >
-            Empty
-          </button>
+            className="square sudoku-square number-panel-eraser fas fa-eraser"
+            onClick={() => this.handleNumberPanelClick("eraser")}
+          />
         </div>
         <div className="reset">
           <button
             type="button"
             className="reset-button"
-            onClick={this.resetGame}
+            onClick={() => this.resetGame()}
           >
             Reset
           </button>

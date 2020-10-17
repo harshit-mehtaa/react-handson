@@ -14,7 +14,7 @@ class App extends Component {
       active: {
         header: "Tic-Tac-Toe",
         card: "tictactoe",
-      }
+      },
     };
   }
 
@@ -31,15 +31,23 @@ class App extends Component {
       active: {
         header: header,
         card: card,
-      }
+      },
     });
-  }
+  };
 
   render() {
     return (
       <div className="App">
-        <Header toggleSlideOut={this.toggleSlideOut} setActiveTab={this.setActiveTab} objState={this.state} />
-        <Main toggleSlideOut={this.toggleSlideOut} setActiveTab={this.setActiveTab} objState={this.state} />
+        <Header
+          toggleSlideOut={this.toggleSlideOut}
+          setActiveTab={this.setActiveTab}
+          objState={this.state}
+        />
+        <Main
+          toggleSlideOut={this.toggleSlideOut}
+          setActiveTab={this.setActiveTab}
+          objState={this.state}
+        />
       </div>
     );
   }
