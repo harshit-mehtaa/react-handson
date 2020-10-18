@@ -325,6 +325,7 @@ html {
   width: 34px;
   margin: unset;
   color: #fc929e;
+  border: 1px solid #000;
 }
 
 .kbd-navigation .square:focus {
@@ -355,6 +356,7 @@ ul {
   padding: 10px 30px;
   font-size: 16px;
   font-weight: 700;
+  margin: 10px 20px;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.16),
     0px 2px 10px 0px rgba(0, 0, 0, 0.12);
 }

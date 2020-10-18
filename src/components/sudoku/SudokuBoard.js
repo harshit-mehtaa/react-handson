@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 import SudokuSquare from "./SudokuSquare";
+import _ from "lodash";
 
 class SudokuBoard extends Component {
   constructor(props) {
     super(props);
 
+    const { sudoku, origsudoku } = this.generateSudoku();
+
     this.state = {
-      squares: Array(81).fill(0),
+      squares: [...[].concat(...sudoku)],
       squareClassName: Array(81).fill("square sudoku-square"),
-      xIsNext: true,
-      // isEnabled: Array(81).fill(true),
       lastSelected: null,
+      origSudoku: [...[].concat(...origsudoku)],
     };
   }
 
@@ -28,7 +30,6 @@ class SudokuBoard extends Component {
         className={classname}
         value={this.state.squares[i]}
         onClick={() => this.handleClick(i)}
-        // disabled={this.state.isEnabled[i]}
       />
     );
   }
@@ -39,7 +40,6 @@ class SudokuBoard extends Component {
         className="square sudoku-square number-panel-number"
         value={i}
         onClick={() => this.handleNumberPanelClick(i)}
-        // disabled={this.state.isEnabled[i]}
       />
     );
   }
@@ -76,9 +76,6 @@ class SudokuBoard extends Component {
   }
 
   handleClick(i) {
-    // const squares = this.state.squares.slice();
-    // squares[i] = this.state.xIsNext ? "X" : "O";
-
     const classname = this.state.squareClassName.slice();
 
     // Gethering row cells
@@ -111,9 +108,6 @@ class SudokuBoard extends Component {
       (x) => !blueCells.includes(x)
     );
 
-    // console.log(blueCells);
-    // console.log(nonBlueCells);
-
     for (const index of nonBlueCells) {
       // Removing blue if exists
       if (classname[index].includes("sudoku-square-blue")) {
@@ -140,10 +134,7 @@ class SudokuBoard extends Component {
     }
 
     this.setState({
-      //   squares: squares,
       squareClassName: classname,
-      //   xIsNext: !this.state.xIsNext,
-      //   isEnabled: isEnabled,
       lastSelected: i,
     });
   }
@@ -152,17 +143,30 @@ class SudokuBoard extends Component {
     this.setState({
       squares: Array(81).fill(null),
       squareClassName: Array(81).fill("square sudoku-square"),
-      xIsNext: true,
-      // isEnabled: Array(81).fill(true),
       lastSelected: null,
     });
   }
 
+  newGame() {
+    const { sudoku, origsudoku } = this.generateSudoku();
+
+    this.setState({
+      squares: [...[].concat(...sudoku)],
+      origSudoku: [...[].concat(...origsudoku)],
+    });
+  }
+
   render() {
-    // console.log(this.state)
     return (
       <>
         <div className="sudoku-board">
+          {JSON.stringify(this.state.squares) ===
+          JSON.stringify(this.state.origSudoku) ? (
+            <div className={"status success"}>Winner</div>
+          ) : (
+            <></>
+          )}
+          {/* <div className={"status "}>Winner</div> */}
           <div className="board-row">
             {this.renderSquare(0)}
             {this.renderSquare(1)}
@@ -282,6 +286,13 @@ class SudokuBoard extends Component {
         <div className="reset">
           <button
             type="button"
+            className="reset-button new-button"
+            onClick={() => this.newGame()}
+          >
+            New
+          </button>
+          <button
+            type="button"
             className="reset-button"
             onClick={() => this.resetGame()}
           >
@@ -290,6 +301,93 @@ class SudokuBoard extends Component {
         </div>
       </>
     );
+  }
+
+  find_empty_cell(sudoku) {
+    for (const row of [...Array(9).keys()]) {
+      for (const col of [...Array(9).keys()]) {
+        if (sudoku[row][col] === 0) {
+          return { row, col };
+        }
+      }
+    }
+    return null;
+  }
+
+  exists_in_row(sudoku, row, number) {
+    return sudoku[row].includes(number);
+  }
+
+  exists_in_col(sudoku, col, number) {
+    const temp = [];
+    for (const row of sudoku) {
+      temp.push(row[col]);
+    }
+
+    return temp.includes(number);
+  }
+
+  exists_in_mini_grid(sudoku, row, col, number) {
+    const box_x = Math.floor(col / 3);
+    const box_y = Math.floor(row / 3);
+
+    for (const i of [...Array(box_y * 3 + 3).keys()].slice(box_y * 3)) {
+      for (const j of [...Array(box_x * 3 + 3).keys()].slice(box_x * 3)) {
+        if (sudoku[i][j] === number && !((i, j) === (row, col))) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  cell_is_safe(sudoku, row, col, number) {
+    return (
+      !this.exists_in_row(sudoku, row, number) &&
+      !this.exists_in_col(sudoku, col, number) &&
+      !this.exists_in_mini_grid(sudoku, row, col, number)
+    );
+  }
+
+  solve(sudoku) {
+    const cell = this.find_empty_cell(sudoku);
+
+    if (!cell) {
+      return true;
+    }
+
+    const { row, col } = cell;
+
+    for (const number of [...Array(10).keys()].slice(1)) {
+      if (this.cell_is_safe(sudoku, row, col, number)) {
+        sudoku[row][col] = number;
+        if (this.solve(sudoku)) {
+          return true;
+        }
+        sudoku[row][col] = 0;
+      }
+    }
+    return false;
+  }
+
+  generateSudoku() {
+    let sudoku = new Array(9).fill(0).map(() => new Array(9).fill(0));
+
+    sudoku[Math.floor(Math.random() * 9)][Math.floor(Math.random() * 9)] =
+      Math.floor(Math.random() * 8) + 1;
+    this.solve(sudoku);
+
+    let origsudoku = _.cloneDeep(sudoku);
+
+    let counter = 25;
+    while (counter > 0) {
+      sudoku[Math.floor(Math.random(1) * 9)][
+        Math.floor(Math.random(2) * 9)
+      ] = null;
+      counter -= 1;
+    }
+
+    return { sudoku, origsudoku };
   }
 }
 
