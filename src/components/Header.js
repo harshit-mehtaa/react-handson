@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./ReactHandson.css";
 import tictactoe from "../img/tictactoe.svg";
 import sudoku from "../img/sudoku.svg";
+import stopwatch from "../img/stopwatch.svg";
 import Navbar from "./Navbar";
 
 class Header extends Component {
@@ -29,6 +30,16 @@ class Header extends Component {
                     alt="sudoku"
                   />
                   <span className={this.props.objState.active.card === "sudoku" ? "side-nav-li-active" : ""}>Sudoku</span>
+                </button>
+              </li>
+              <li onClick={() => this.props.setActiveTab("Stopwatch", "stopwatch")}>
+                <button>
+                  <img
+                    src={stopwatch}
+                    className="side-nav-icon"
+                    alt="stopwatch"
+                  />
+                  <span className={this.props.objState.active.card === "stopwatch" ? "side-nav-li-active" : ""}>Stopwatch</span>
                 </button>
               </li>
             </ul>
