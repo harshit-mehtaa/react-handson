@@ -6,13 +6,16 @@ class SudokuBoard extends Component {
   constructor(props) {
     super(props);
 
-    const { sudoku, origsudoku } = this.generateSudoku();
+    const { sudoku, completeSudoku, isDisabled } = this.generateSudoku();
 
     this.state = {
       squares: [...[].concat(...sudoku)],
+      origSudoku: [...[].concat(...sudoku)],
+      completeSudoku: [...[].concat(...completeSudoku)],
+      isDisabled: isDisabled,
       squareClassName: Array(81).fill("square sudoku-square"),
       lastSelected: null,
-      origSudoku: [...[].concat(...origsudoku)],
+
     };
   }
 
@@ -23,6 +26,11 @@ class SudokuBoard extends Component {
     }
     if ((i >= 18 && i <= 26) || (i >= 45 && i <= 53)) {
       classname += " border-bottom-yellow";
+    }
+
+    // Disable pre-filled numbers
+    if (this.state.isDisabled[i]) {
+      classname += " red disabled";
     }
 
     return (
@@ -65,8 +73,10 @@ class SudokuBoard extends Component {
       }
     }
 
-    if (!classname[this.state.lastSelected].includes("sudoku-square-active")) {
-      classname[this.state.lastSelected] += " sudoku-square-active";
+    if (this.state.lastSelected !== null) {
+      if (!classname[this.state.lastSelected].includes("sudoku-square-active")) {
+        classname[this.state.lastSelected] += " sudoku-square-active";
+      }
     }
 
     this.setState({
@@ -129,6 +139,15 @@ class SudokuBoard extends Component {
       }
     }
 
+    // Remove previous selected cell as active
+    if (this.state.lastSelected !== null) {
+    classname[this.state.lastSelected] = classname[this.state.lastSelected].replace(
+      " sudoku-square-active",
+      ""
+    );
+    }
+
+    // Change active cell
     if (!classname[i].includes("sudoku-square-active")) {
       classname[i] += " sudoku-square-active";
     }
@@ -141,18 +160,20 @@ class SudokuBoard extends Component {
 
   resetGame() {
     this.setState({
-      squares: Array(81).fill(null),
-      squareClassName: Array(81).fill("square sudoku-square"),
+      squares: this.state.origSudoku,
       lastSelected: null,
     });
   }
 
   newGame() {
-    const { sudoku, origsudoku } = this.generateSudoku();
+    const { sudoku, completeSudoku, isDisabled } = this.generateSudoku();
 
     this.setState({
       squares: [...[].concat(...sudoku)],
-      origSudoku: [...[].concat(...origsudoku)],
+      origSudoku: [...[].concat(...sudoku)],
+      completeSudoku: [...[].concat(...completeSudoku)],
+      isDisabled: isDisabled,
+      lastSelected: null,
     });
   }
 
@@ -161,12 +182,11 @@ class SudokuBoard extends Component {
       <>
         <div className="sudoku-board">
           {JSON.stringify(this.state.squares) ===
-          JSON.stringify(this.state.origSudoku) ? (
-            <div className={"status success"}>Winner</div>
-          ) : (
-            <></>
-          )}
-          {/* <div className={"status "}>Winner</div> */}
+            JSON.stringify(this.state.completeSudoku) ? (
+              <div className={"status success"}>Winner</div>
+            ) : (
+              <></>
+            )}
           <div className="board-row">
             {this.renderSquare(0)}
             {this.renderSquare(1)}
@@ -279,7 +299,7 @@ class SudokuBoard extends Component {
           {this.renderNumberPanel(9)}
           <div
             type="button"
-            className="square sudoku-square number-panel-eraser fas fa-eraser"
+            className="square sudoku-square eraser fas fa-eraser"
             onClick={() => this.handleNumberPanelClick("eraser")}
           />
         </div>
@@ -377,7 +397,7 @@ class SudokuBoard extends Component {
       Math.floor(Math.random() * 8) + 1;
     this.solve(sudoku);
 
-    let origsudoku = _.cloneDeep(sudoku);
+    let completeSudoku = _.cloneDeep(sudoku);
 
     let counter = 25;
     while (counter > 0) {
@@ -387,7 +407,16 @@ class SudokuBoard extends Component {
       counter -= 1;
     }
 
-    return { sudoku, origsudoku };
+    let isDisabled = [...[].concat(...sudoku)].reduce((isDisabled, x) => {
+      if (x === null) {
+        isDisabled.push(false)
+      } else {
+        isDisabled.push(true)
+      }
+      return isDisabled;
+    }, []);
+
+    return { sudoku, completeSudoku, isDisabled };
   }
 }
 

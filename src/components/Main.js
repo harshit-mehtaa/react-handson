@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import TicTacToe from "./tictactoe/TicTacToe";
 import "./ReactHandson.css";
+import TicTacToe from "./tictactoe/TicTacToe";
 import Sudoku from "./sudoku/Sudoku";
 
 class Main extends Component {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import tictactoe from "../tictactoe.svg";
-import sudoku from "../sudoku.svg";
 import "./ReactHandson.css";
+import tictactoe from "../img/tictactoe.svg";
+import sudoku from "../img/sudoku.svg";
 import Navbar from "./Navbar";
 
 class Header extends Component {
