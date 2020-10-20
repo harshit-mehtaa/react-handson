@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/react-handson/static/css/main.337ddf38.chunk.css",
+    "main.js": "/react-handson/static/js/main.311ec333.chunk.js",
+    "main.js.map": "/react-handson/static/js/main.311ec333.chunk.js.map",
+    "runtime-main.js": "/react-handson/static/js/runtime-main.bf00c9dd.js",
+    "runtime-main.js.map": "/react-handson/static/js/runtime-main.bf00c9dd.js.map",
+    "static/js/2.26acb2b6.chunk.js": "/react-handson/static/js/2.26acb2b6.chunk.js",
+    "static/js/2.26acb2b6.chunk.js.map": "/react-handson/static/js/2.26acb2b6.chunk.js.map",
+    "index.html": "/react-handson/index.html",
+    "precache-manifest.ccf0f9056b100b5aea0587b8e1026ebb.js": "/react-handson/precache-manifest.ccf0f9056b100b5aea0587b8e1026ebb.js",
+    "service-worker.js": "/react-handson/service-worker.js",
+    "static/css/main.337ddf38.chunk.css.map": "/react-handson/static/css/main.337ddf38.chunk.css.map",
+    "static/js/2.26acb2b6.chunk.js.LICENSE.txt": "/react-handson/static/js/2.26acb2b6.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/react-handson/static/media/logo.ee7cd8ed.svg",
+    "static/media/stopwatch.svg": "/react-handson/static/media/stopwatch.a09e33b2.svg",
+    "static/media/sudoku.svg": "/react-handson/static/media/sudoku.33f430c2.svg",
+    "static/media/tictactoe.svg": "/react-handson/static/media/tictactoe.e59e2ae1.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bf00c9dd.js",
+    "static/js/2.26acb2b6.chunk.js",
+    "static/css/main.337ddf38.chunk.css",
+    "static/js/main.311ec333.chunk.js"
+  ]
+}
