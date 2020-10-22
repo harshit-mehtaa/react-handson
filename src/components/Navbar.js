@@ -12,7 +12,7 @@ class Navbar extends Component {
               className="button-collapse"
               onClick={this.props.toggleSlideOut}
             >
-              <i className="fas fa-bars"></i>
+              <i className="fa fa-bars"></i>
               <span className="sr-only" aria-hidden="true">
                 Toggle side navigation
               </span>
