@@ -42,6 +42,12 @@ class Header extends Component {
                   <span className={this.props.objState.active.card === "stopwatch" ? "side-nav-li-active" : " "}>Stopwatch</span>
                 </button>
               </li>
+              <li onClick={() => this.props.setActiveTab("Camera", "camera")}>
+                <button>
+                  <i className="fa fa-camera" aria-hidden="true"></i>
+                  <span className={this.props.objState.active.card === "camera" ? "side-nav-li-active" : " "}>Camera</span>
+                </button>
+              </li>
             </ul>
           </div>
           <Navbar toggleSlideOut={this.props.toggleSlideOut} />

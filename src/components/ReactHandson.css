@@ -209,8 +209,13 @@ html {
   color: #424242;
 }
 
-.side-nav ul li button span {
+/* .side-nav ul li button span {
   margin-top: 6px;
+} */
+
+.side-nav ul li button i {
+  width: 22px;
+  margin-right: 10px;
 }
 
 .side-nav ul li:hover,
@@ -485,4 +490,8 @@ ul {
 }
 .stopwatch-resume:hover  {
   background-color: #1e53ff;
+}
+
+.side-nav-icon i {
+  margin-right: 10px;
 }
