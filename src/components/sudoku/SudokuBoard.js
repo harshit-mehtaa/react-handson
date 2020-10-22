@@ -299,9 +299,11 @@ class SudokuBoard extends Component {
           {this.renderNumberPanel(9)}
           <div
             type="button"
-            className="square sudoku-square eraser fas fa-eraser"
+            className="square sudoku-square number-panel-number eraser"
             onClick={() => this.handleNumberPanelClick("eraser")}
-          />
+          >
+            <i className="fa fa-eraser"></i>
+            </div>
         </div>
         <div className="reset">
           <button
