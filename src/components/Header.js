@@ -19,7 +19,7 @@ class Header extends Component {
                     className="side-nav-icon"
                     alt="tic-tac-toe"
                   />
-                  <span className={this.props.objState.active.card === "tictactoe" ? "side-nav-li-active" : ""}>Tic-Tac-Toe</span>
+                  <span className={this.props.objState.active.card === "tictactoe" ? "side-nav-li-active" : " "}>Tic-Tac-Toe</span>
                 </button>
               </li>
               <li onClick={() => this.props.setActiveTab("Sudoku", "sudoku")}>
@@ -29,7 +29,7 @@ class Header extends Component {
                     className="side-nav-icon"
                     alt="sudoku"
                   />
-                  <span className={this.props.objState.active.card === "sudoku" ? "side-nav-li-active" : ""}>Sudoku</span>
+                  <span className={this.props.objState.active.card === "sudoku" ? "side-nav-li-active" : " "}>Sudoku</span>
                 </button>
               </li>
               <li onClick={() => this.props.setActiveTab("Stopwatch", "stopwatch")}>
@@ -39,7 +39,7 @@ class Header extends Component {
                     className="side-nav-icon"
                     alt="stopwatch"
                   />
-                  <span className={this.props.objState.active.card === "stopwatch" ? "side-nav-li-active" : ""}>Stopwatch</span>
+                  <span className={this.props.objState.active.card === "stopwatch" ? "side-nav-li-active" : " "}>Stopwatch</span>
                 </button>
               </li>
             </ul>

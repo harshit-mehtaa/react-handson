@@ -454,3 +454,35 @@ ul {
 .new-button:hover  {
   background-color: #1e53ff;
 }
+
+.stopwatch-display {
+  margin: 20px 30px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 40px 0px;
+  width: 400px;
+  background-color: #282c34;
+  color: dodgerblue;
+  font-size: 48px;
+}
+
+.stopwatch-start {
+  background-color: #56ce52;
+}
+.stopwatch-start:hover {
+  background-color: #2eb029
+}
+
+.stopwatch-stop {
+  background-color: #f65757;
+}
+.stopwatch-stop:hover {
+  background-color: #f43434;
+}
+
+.stopwatch-resume {
+  background-color: dodgerblue;
+}
+.stopwatch-resume:hover  {
+  background-color: #1e53ff;
+}
