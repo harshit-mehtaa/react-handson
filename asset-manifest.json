@@ -1,17 +1,20 @@
 {
   "files": {
-    "main.css": "/react-handson/static/css/main.337ddf38.chunk.css",
-    "main.js": "/react-handson/static/js/main.311ec333.chunk.js",
-    "main.js.map": "/react-handson/static/js/main.311ec333.chunk.js.map",
+    "main.css": "/react-handson/static/css/main.989fcfc0.chunk.css",
+    "main.js": "/react-handson/static/js/main.8f017f22.chunk.js",
+    "main.js.map": "/react-handson/static/js/main.8f017f22.chunk.js.map",
     "runtime-main.js": "/react-handson/static/js/runtime-main.bf00c9dd.js",
     "runtime-main.js.map": "/react-handson/static/js/runtime-main.bf00c9dd.js.map",
-    "static/js/2.26acb2b6.chunk.js": "/react-handson/static/js/2.26acb2b6.chunk.js",
-    "static/js/2.26acb2b6.chunk.js.map": "/react-handson/static/js/2.26acb2b6.chunk.js.map",
+    "static/css/2.b3aa2c4c.chunk.css": "/react-handson/static/css/2.b3aa2c4c.chunk.css",
+    "static/js/2.f8cad197.chunk.js": "/react-handson/static/js/2.f8cad197.chunk.js",
+    "static/js/2.f8cad197.chunk.js.map": "/react-handson/static/js/2.f8cad197.chunk.js.map",
     "index.html": "/react-handson/index.html",
-    "precache-manifest.ccf0f9056b100b5aea0587b8e1026ebb.js": "/react-handson/precache-manifest.ccf0f9056b100b5aea0587b8e1026ebb.js",
+    "precache-manifest.f62e02a751728180d66f6160ac30ff70.js": "/react-handson/precache-manifest.f62e02a751728180d66f6160ac30ff70.js",
     "service-worker.js": "/react-handson/service-worker.js",
-    "static/css/main.337ddf38.chunk.css.map": "/react-handson/static/css/main.337ddf38.chunk.css.map",
-    "static/js/2.26acb2b6.chunk.js.LICENSE.txt": "/react-handson/static/js/2.26acb2b6.chunk.js.LICENSE.txt",
+    "static/css/2.b3aa2c4c.chunk.css.map": "/react-handson/static/css/2.b3aa2c4c.chunk.css.map",
+    "static/css/main.989fcfc0.chunk.css.map": "/react-handson/static/css/main.989fcfc0.chunk.css.map",
+    "static/js/2.f8cad197.chunk.js.LICENSE.txt": "/react-handson/static/js/2.f8cad197.chunk.js.LICENSE.txt",
+    "static/media/font-awesome.min.css": "/react-handson/static/media/fontawesome-webfont.fee66e71.woff",
     "static/media/logo.svg": "/react-handson/static/media/logo.ee7cd8ed.svg",
     "static/media/stopwatch.svg": "/react-handson/static/media/stopwatch.a09e33b2.svg",
     "static/media/sudoku.svg": "/react-handson/static/media/sudoku.33f430c2.svg",
@@ -19,8 +22,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.bf00c9dd.js",
-    "static/js/2.26acb2b6.chunk.js",
-    "static/css/main.337ddf38.chunk.css",
-    "static/js/main.311ec333.chunk.js"
+    "static/css/2.b3aa2c4c.chunk.css",
+    "static/js/2.f8cad197.chunk.js",
+    "static/css/main.989fcfc0.chunk.css",
+    "static/js/main.8f017f22.chunk.js"
   ]
 }
